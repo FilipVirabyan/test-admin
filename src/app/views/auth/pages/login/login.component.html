@@ -1,0 +1,36 @@
+<main class="container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <form fxLayout="column" fxLayoutAlign="center center" (submit)="onLogin()" [formGroup]="loginForm">
+          <div class="form-field">
+            <mat-form-field>
+              <input matInput placeholder="Email" formControlName="email" name="email" required>
+                <mat-error *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched">
+                    Wrong email format
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">
+                   Email is required
+                </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="form-field">
+            <mat-form-field>
+              <input matInput type="password" formControlName="password" placeholder="Password" name="password" required>
+                <mat-error *ngIf="loginForm.get('password')?.hasError('required') && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                   Password is required
+                </mat-error>
+            </mat-form-field>
+          </div>
+        <section class="submit-container">
+            <button mat-raised-button color="accent" [disabled]="loginForm.invalid">Login</button>
+            <p class="error-message" *ngIf="errMessage">{{errMessage}}</p>
+        </section>
+        </form>
+      </mat-card-content>
+    </mat-card>
+</main>

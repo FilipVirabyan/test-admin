@@ -1,0 +1,48 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="profileForm" 
+            (ngSubmit)="submitForm()"
+            class="profile-form side-error-message">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" required>
+          <mat-error *ngIf="profileForm.get('firstName')?.invalid && (profileForm.get('firstName')?.dirty || profileForm.get('firstName')?.touched)">
+            First Name is required.
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" required>
+          <mat-error *ngIf="profileForm.get('lastName')?.invalid && (profileForm.get('lastName')?.dirty || profileForm.get('lastName')?.touched)">
+            Last Name is required.
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" readonly>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone"  prefix="+7" mask="000 00 00 00" [showMaskTyped]="true">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>URL</mat-label>
+          <input matInput formControlName="url">
+          <mat-error *ngIf="profileForm.get('url')?.invalid && (profileForm.get('url')?.dirty || profileForm.get('url')?.touched)">
+            Please enter a valid URL.
+          </mat-error>
+        </mat-form-field>
+  
+        <div class="submit-container">
+            <button mat-raised-button color="accent" type="submit" [disabled]="profileForm.invalid || profileForm.pristine">Save</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,0 +1,11 @@
+<main>
+    <app-header (showMenu)="drawer.toggle()"></app-header>
+    <mat-drawer-container  class="example-container">
+        <mat-drawer [opened]="true" #drawer mode="side" class="side">
+            <app-menu></app-menu>
+        </mat-drawer>
+        <mat-drawer-content>
+        <router-outlet></router-outlet>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</main>

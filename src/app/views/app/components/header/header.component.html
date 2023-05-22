@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+        <section>
+            <mat-icon class="menu-icon" (click)="showMenu.emit()">menu</mat-icon>
+            <span>Test App</span>
+        </section>
+        <span class="spacer"></span>
+        <section class="logout-section" *ngIf="(_profileService.profile$|async) as user">
+            <span routerLink="profile">{{user.firstName}} {{user.lastName}}</span>
+            <mat-icon routerLink="auth">logout</mat-icon>
+        </section>
+</mat-toolbar>

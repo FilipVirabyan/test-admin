@@ -1,7 +1,10 @@
+import {BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { IUser } from 'core/models';
 
-Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProfileService {
-    public get profile$() { return of({}); }
+   profile$: BehaviorSubject<IUser> = new BehaviorSubject({} as IUser)
 }
